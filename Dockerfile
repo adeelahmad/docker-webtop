@@ -59,7 +59,13 @@ RUN sudo DEBIAN_FRONTEND=noninteractive \
 
 
 RUN DEBIAN_FRONTEND=noninteractive \
-    apt install -y vim nano traceroute nmap iperf3 iperf  net-tools python3-pip python-pip vim wget curl htop git axel aria2 apt-transport-https ca-certificates curl software-properties-common gnupg2 pigz ifupdown2 bwm-ng iotop lsscsi lshw unzip p7zip sudo screen tree  git tinc mtr tcpdump nmap asciinema bash bash-completion  ca-certificates tzdata sudo dpkg apt-transport-https openssh-client binutils dnsutils bridge-utils util-linux inetutils-traceroute net-tools curl wget grep sed rsync socat netcat htop nano vim-tiny tar gzip bzip2 xz-utils zip unzip python3 python3-dev git git-flow && wget -q -O - https://bootstrap.pypa.io/get-pip.py | python3 - && pip3 install --no-cache-dir --upgrade pip setuptools wheel && pip3 install --no-cache-dir virtualenv pipreqs pylint speedtest-cli
+    apt install -y vim nano traceroute nmap iperf3 iperf  net-tools python3-pip python-pip \
+     vim wget curl htop git axel aria2 apt-transport-https ca-certificates curl software-properties-common \
+     gnupg2 pigz ifupdown2 bwm-ng iotop lsscsi lshw unzip p7zip sudo screen tree  git tinc mtr tcpdump \
+     nmap asciinema bash bash-completion  ca-certificates tzdata sudo dpkg apt-transport-https openssh-client \
+     binutils dnsutils bridge-utils util-linux inetutils-traceroute net-tools curl wget grep sed rsync socat \
+     netcat htop nano vim-tiny tar gzip bzip2 xz-utils zip unzip \
+     python3 python3-dev git git-flow && wget -q -O - https://bootstrap.pypa.io/get-pip.py | python3 - && pip3 install --no-cache-dir --upgrade pip setuptools wheel && pip3 install --no-cache-dir virtualenv pipreqs pylint speedtest-cli
 
 RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get update \
@@ -78,6 +84,11 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     /var/cache/* \
     /var/lib/apt/lists/* \
     /var/tmp/*
+
+
+RUN wget https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64 -O vs-code.deb && \
+  sudo dpkg -i vs-code.deb
+
 
 # add local files
 COPY /root /
